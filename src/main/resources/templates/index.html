@@ -1,0 +1,40 @@
+<html>
+<head>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>Kindle推送页面</title>
+</head>
+<body style="background-image: url(img/photo-1433360405326-e50f909805b3.jpg);background-size:100% 100%;">
+<form style="background-color: white;width: 50%;margin-left:25%;padding: 20px">
+    <div class="form-group">
+        <label for="kindleEmail">kindleEmail</label>
+        <input type="text" class="form-control" id="kindleEmail" name="kindleEmail" placeholder="请输入您的kindle的Email">
+    </div>
+    <div class="form-group">
+        <label for="sendEmail">sendEmail</label>
+        <input type="text" class="form-control" id="sendEmail" name="sendEmail" placeholder="请输入您的要使用哪个Email进行推送文件">
+    </div>
+    <div class="form-group">
+        <label for="password">Email Password:163邮箱是账号密码，QQ邮箱则是授权码</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="请输入您的推送邮箱密码">
+    </div>
+    <div class="form-group">
+        <label for="file">请选择你要推送的文件</label>
+        <input type="file" multiple="multiple" class="form-control" id="file" name="file" placeholder="请选择你要推送的文件">
+    </div>
+    <button id="pull" class="btn btn-default" type="button">推送</button>
+</form>
+<table class="table" id="table" style="background-color: white;width: 70%;margin-left:15%;padding: 20px">
+
+</table>
+
+
+</body>
+</html>

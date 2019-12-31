@@ -1,5 +1,23 @@
 $(function(){
-
+    $.ajax({
+        url:"/getInfo",
+        dataType:'json',
+        type:'GET',
+        async: false,
+        processData : false, // 使数据不做处理
+        contentType : false, // 不要设置Content-Type请求头
+        success:function(data){
+            console.log(data)
+            if(data!=null){
+                dataStr = JSON.stringify(data)
+                dataJson = JSON.parse(dataStr)
+                $("#table").prepend("<tr><th>书名</th><th>状态</th></tr>")
+                for(var key in dataJson){
+                    $("#"+key).val(dataJson[key])
+                }
+            }
+        }
+    });
     $("#pull").click(function(){
         let kindleEmail = $("#kindleEmail").val();
         if(kindleEmail == undefined || kindleEmail==""){

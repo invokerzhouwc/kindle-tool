@@ -23,7 +23,7 @@
 - Docker
 - maven
 
-### 使用方式
+### 部分指令
 删除未打包成功的镜像
 ```shell
 docker rmi -f $(docker images | grep '<none>' | awk -F ' ' '{print $3}')
@@ -36,9 +36,24 @@ pid=$(docker ps -a | grep kindle-tool | awk -F ' ' '{print $1}')
 ```shell
 docker stop "$pid" && docker rm "$pid"
 ```
-启动镜像
+### 启动镜像
+#### V1.0
 ```shell
 docker run -i -t -d --name kindle-tool -p 8084:8084 kindle-tool:latest
+```
+#### V1.1
+增加账号密码本地缓存功能，默认缓存在/root/message
+默认缓存
+```shell
+docker run -i -t -d --name kindle-tool -p 8084:8084 -e "STORAGE_MESSAGE=true" kindle-tool:latest
+```
+指定缓存路径
+```shell
+docker run -i -t -d --name kindle-tool -p 8084:8084 -e "STORAGE_MESSAGE=true" -e "STORAGE_MESSAGE_PATH=/root/secret" kindle-tool:latest
+```
+挂载缓存路径
+```shell
+docker run -i -t -d --name kindle-tool -p 8084:8084 -v /tmp/secret:/root/secret -e "STORAGE_MESSAGE=true" -e "STORAGE_MESSAGE_PATH=/root/secret" kindle-tool:latest
 ```
 访问
 http://localhost:8084

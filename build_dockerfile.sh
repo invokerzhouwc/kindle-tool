@@ -10,4 +10,4 @@ pid=$(docker ps -a | grep kindle-tool | awk -F ' ' '{print $1}')
 docker stop "$pid" && docker rm "$pid"
 # 启动镜像
 #docker run -i -t -d --name kindle-tool -p 8084:8084 -e "STORAGE_MESSAGE=true" kindle-tool:latest
-docker run -i -t -d --name kindle-tool -p 8084:8084 -v /tmp/secret:/root/secret -e "STORAGE_MESSAGE=true" -e "STORAGE_MESSAGE_PATH=/root/secret" kindle-tool:latest
+docker run -i -t -d --name kindle-tool -p 8084:8084 -v /tmp/secret:/root/secret -e "STORAGE_MESSAGE=true" -e "STORAGE_MESSAGE_PATH=/root/secret" --restart=always kindle-tool:latest

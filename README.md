@@ -48,12 +48,14 @@ docker run -i -t -d --name kindle-tool -p 8084:8084 kindle-tool:latest
 docker run -i -t -d --name kindle-tool -p 8084:8084 -e "STORAGE_MESSAGE=true" kindle-tool:latest
 ```
 指定缓存路径
+-e "STORAGE_MESSAGE_PATH=/root/secret"
 ```shell
 docker run -i -t -d --name kindle-tool -p 8084:8084 -e "STORAGE_MESSAGE=true" -e "STORAGE_MESSAGE_PATH=/root/secret" kindle-tool:latest
 ```
-挂载缓存路径
+随着Docker启动而启动
+-e "STORAGE_MESSAGE_PATH=/root/secret"
 ```shell
-docker run -i -t -d --name kindle-tool -p 8084:8084 -v /tmp/secret:/root/secret -e "STORAGE_MESSAGE=true" -e "STORAGE_MESSAGE_PATH=/root/secret" kindle-tool:latest
+docker run -i -t -d --name kindle-tool -p 8084:8084 -v /tmp/secret:/root/secret -e "STORAGE_MESSAGE=true" -e "STORAGE_MESSAGE_PATH=/root/secret" --restart=always kindle-tool:latest
 ```
 访问
 http://localhost:8084
